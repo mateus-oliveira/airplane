@@ -9,6 +9,7 @@ public class Airplane : MonoBehaviour {
     private Vector2 moveDirection;
     private LineRenderer lineRenderer;
     private List<Vector3> pathPoints;
+    [SerializeField] private AudioClip explosionSound;
 
     void Start() {
         currentPointIndex = 0;
@@ -68,7 +69,8 @@ public class Airplane : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Airplane")) {
-            SceneManager.LoadScene("GameOver");
+            AudioManager.instance.PlayAudio(explosionSound);
+            //SceneManager.LoadScene("GameOver");
         }
     }
 
