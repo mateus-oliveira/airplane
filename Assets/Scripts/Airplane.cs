@@ -70,7 +70,7 @@ public class Airplane : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Airplane")) {
             AudioManager.instance.PlayAudio(explosionSound);
-            //SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("GameOver");
         }
     }
 
