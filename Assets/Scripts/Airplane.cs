@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Airplane : MonoBehaviour {
     private int currentPointIndex;
-    private float speed;
     private bool isDragging;
     private Vector2 moveDirection;
     private LineRenderer lineRenderer;
     private List<Vector3> pathPoints;
+    [SerializeField] private float speed;
     [SerializeField] private AudioClip explosionSound;
 
     void Start() {
@@ -21,7 +21,7 @@ public class Airplane : MonoBehaviour {
         lineRenderer.positionCount = 0;
         lineRenderer.startWidth = 0.03f;
         lineRenderer.endWidth = 0.03f;
-        lineRenderer.sortingOrder = 1;
+        lineRenderer.sortingOrder = 2;
         lineRenderer.material = new Material(Shader.Find("Sprites/Default")) { color = Color.white };
     }
 
@@ -99,9 +99,8 @@ public class Airplane : MonoBehaviour {
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
     }
 
-    public void SetDirection(Vector2 direction, float speed) {
+    public void SetDirection(Vector2 direction) {
         moveDirection = direction.normalized;
-        this.speed = speed;
         this.Rotate();
     }
 

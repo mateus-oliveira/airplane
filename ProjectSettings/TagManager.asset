@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Airplane
+  - Score
+  - Counter
   layers:
   - Default
   - TransparentFX

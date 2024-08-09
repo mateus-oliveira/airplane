@@ -1,10 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+
 
 public class PlaneSpawner : MonoBehaviour {
     private float edgeOffset;
-    [SerializeField] private float speed;
     [SerializeField] private float spawnInterval;
-    [SerializeField] private GameObject planePrefab;
+    [SerializeField] private List<GameObject> planePrefabs;
 
     void Start() {
         edgeOffset = 0.2f;
@@ -54,9 +56,11 @@ public class PlaneSpawner : MonoBehaviour {
         spawnPosition.z = 0; // Definindo a posição Z para 0
 
         // Instanciando o prefab
-        GameObject plane = Instantiate(planePrefab, spawnPosition, Quaternion.identity);
+        System.Random random = new System.Random();
+        int index = random.Next(planePrefabs.Count);
+        GameObject plane = Instantiate(planePrefabs[index], spawnPosition, Quaternion.identity);
 
         // Movendo o avião e ajustando a rotação
-        plane.GetComponent<Airplane>().SetDirection(direction, speed);
+        plane.GetComponent<Airplane>().SetDirection(direction);
     }
 }
