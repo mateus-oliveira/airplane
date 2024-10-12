@@ -71,6 +71,9 @@ public class Airplane : MonoBehaviour {
         if (other.CompareTag("Airplane")) {
             AudioManager.instance.PlayAudio(explosionSound);
             SceneManager.LoadScene("GameOver");
+        } else if (other.CompareTag("Score")) {
+            Destroy(this.gameObject);
+            Score.Instance.AddPoints(1);
         }
     }
 
