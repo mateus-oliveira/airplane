@@ -78,6 +78,8 @@ public class Airplane : MonoBehaviour {
             Invoke("GameOver", 2f);
         } else if (other.CompareTag("Score")) {
             Destroy(this.gameObject);
+            GameObject spawner = GameObject.FindGameObjectWithTag("PlaneSpawner");
+            spawner.GetComponent<PlaneSpawner>().RemovePlane();
             GameController.Instance.AddPoints(1);
         }
     }

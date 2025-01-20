@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -233,9 +232,9 @@ RectTransform:
   - {fileID: 1246381206}
   m_Father: {fileID: 1080870210}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -274, y: 743}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 151, y: -152}
   m_SizeDelta: {x: 160, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &496957453
@@ -316,7 +315,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.65749806, g: 0.65749806, b: 0.65749806, a: 0}
+  m_BackGroundColor: {r: 0.019607844, g: 0.3019608, b: 0.10196079, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -610,7 +609,7 @@ GameObject:
   - component: {fileID: 739233909}
   m_Layer: 0
   m_Name: PlaneSpawner
-  m_TagString: Untagged
+  m_TagString: PlaneSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -627,11 +626,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed721a778810142eb5cf834d3888d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 2
   planePrefabs:
   - {fileID: 4572559442142803197, guid: 9f41518c74c57bdeb88fae589d0ec494, type: 3}
   - {fileID: 4572559442142803197, guid: d16d59341eaef70de9bb6ec270b8b7fa, type: 3}
   - {fileID: 4572559442142803197, guid: fed83a46092f9e860a2f052a0fde6f5c, type: 3}
+  maxPlanesOnScreen: 10
+  spawnInterval: 6
+  decreaseInterval: 0.1
 --- !u!4 &739233910
 Transform:
   m_ObjectHideFlags: 0
@@ -895,7 +896,7 @@ Transform:
   m_GameObject: {fileID: 1246381204}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -62, y: 2, z: -15586.668}
+  m_LocalPosition: {x: -62, y: 1, z: -15586.668}
   m_LocalScale: {x: 173.1852, y: 173.1852, z: 173.1852}
   m_ConstrainProportionsScale: 0
   m_Children: []

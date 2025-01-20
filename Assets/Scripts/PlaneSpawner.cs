@@ -3,18 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlaneSpawner : MonoBehaviour {
+public class PlaneSpawner : MonoBehaviour
+{
+    private int planesOnScreen;
     private float edgeOffset;
-    [SerializeField] private float spawnInterval;
+    private float currentSpawnInterval;
     [SerializeField] private List<GameObject> planePrefabs;
+    [SerializeField] private int maxPlanesOnScreen;
+    [SerializeField] private float spawnInterval;
+    [SerializeField] private float decreaseInterval;
 
-    void Start() {
+
+    void Start()
+    {
+        planesOnScreen = 0;
         edgeOffset = 0.2f;
+        currentSpawnInterval = spawnInterval;
         GameController.Instance.ResetPoints();
-        InvokeRepeating("SpawnPlane", 0f, spawnInterval);
+        Invoke("SpawnPlane", currentSpawnInterval);
     }
 
-    void SpawnPlane()
+    private void UpdateInterval()
+    {
+        currentSpawnInterval -= decreaseInterval;
+        if (planesOnScreen >= maxPlanesOnScreen)
+        {
+            currentSpawnInterval = spawnInterval;
+        }
+    }
+
+    private void SpawnPlane()
     {
         // Definindo as bordas da tela
         float screenWidth = Screen.width;
@@ -63,5 +81,14 @@ public class PlaneSpawner : MonoBehaviour {
 
         // Movendo o avião e ajustando a rotação
         plane.GetComponent<Airplane>().SetDirection(direction);
+
+        planesOnScreen++;
+        this.UpdateInterval();
+        Invoke("SpawnPlane", currentSpawnInterval);
+    }
+
+    public void RemovePlane()
+    {
+        planesOnScreen--;
     }
 }

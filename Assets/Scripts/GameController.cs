@@ -45,7 +45,8 @@ public class GameController : MonoBehaviour
         this.ResetPoints();
     }
 
-    private void LoadScoreText() {
+    private void LoadScoreText()
+    {
         GameObject text = GameObject.FindGameObjectWithTag("ScoreText");
         this.scoreText = text.GetComponent<Text>();
     }
