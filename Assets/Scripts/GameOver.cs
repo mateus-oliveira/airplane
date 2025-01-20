@@ -7,7 +7,7 @@ public class GameOver : MonoBehaviour {
     [SerializeField] private Text score;
 
     void Start() {
-        score.text = "Score: " + Score.Instance.points;
+        score.text = "Score: " + GameController.Instance.points;
     }
 
     public void Restart() {

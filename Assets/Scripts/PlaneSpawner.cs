@@ -10,7 +10,7 @@ public class PlaneSpawner : MonoBehaviour {
 
     void Start() {
         edgeOffset = 0.2f;
-        Score.Instance.ResetPoints();
+        GameController.Instance.ResetPoints();
         InvokeRepeating("SpawnPlane", 0f, spawnInterval);
     }
 

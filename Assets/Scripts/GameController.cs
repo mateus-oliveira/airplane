@@ -1,23 +1,23 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Score : MonoBehaviour
+public class GameController : MonoBehaviour
 {
-    [SerializeField] private Text scoreText;
-    private static Score _instance;
+    private Text scoreText;
+    private static GameController _instance;
 
-    public static Score Instance
+    public static GameController Instance
     {
         get
         {
             if (_instance == null)
             {
-                _instance = FindObjectOfType<Score>();
+                _instance = FindObjectOfType<GameController>();
 
                 if (_instance == null)
                 {
-                    GameObject singleton = new GameObject("Score");
-                    _instance = singleton.AddComponent<Score>();
+                    GameObject singleton = new GameObject("GameController");
+                    _instance = singleton.AddComponent<GameController>();
                     DontDestroyOnLoad(singleton);
                 }
             }
@@ -27,10 +27,6 @@ public class Score : MonoBehaviour
     }
 
     public int points { get; private set; }
-    
-    void Start() {
-        this.LoadScoreText();
-    }
 
     private void Awake()
     {
@@ -43,6 +39,10 @@ public class Score : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    
+    public void Start() {
+        this.ResetPoints();
     }
 
     private void LoadScoreText() {

@@ -8,13 +8,16 @@ public class Airplane : MonoBehaviour {
     private Vector2 moveDirection;
     private LineRenderer lineRenderer;
     private List<Vector3> pathPoints;
+    private SpriteRenderer spriteRenderer;
     [SerializeField] private float speed;
     [SerializeField] private AudioClip explosionSound;
+    [SerializeField] private Sprite explosionImage;
 
     void Start() {
         currentPointIndex = 0;
         isDragging = false;
         pathPoints = new List<Vector3>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         // Line Renderer
         lineRenderer = gameObject.AddComponent<LineRenderer>();
@@ -70,11 +73,17 @@ public class Airplane : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Airplane")) {
             AudioManager.instance.PlayAudio(explosionSound);
-            SceneManager.LoadScene("GameOver");
+            spriteRenderer.sprite = explosionImage;
+            speed = 0;
+            Invoke("GameOver", 2f);
         } else if (other.CompareTag("Score")) {
             Destroy(this.gameObject);
-            Score.Instance.AddPoints(1);
+            GameController.Instance.AddPoints(1);
         }
+    }
+
+    private void GameOver() {
+        SceneManager.LoadScene("GameOver");
     }
 
     private void FollowPath() {
@@ -106,6 +115,4 @@ public class Airplane : MonoBehaviour {
         moveDirection = direction.normalized;
         this.Rotate();
     }
-
-
 }

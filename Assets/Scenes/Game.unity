@@ -598,6 +598,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1521284522}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &739233908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 739233910}
+  - component: {fileID: 739233909}
+  m_Layer: 0
+  m_Name: PlaneSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &739233909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739233908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ed721a778810142eb5cf834d3888d19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnInterval: 2
+  planePrefabs:
+  - {fileID: 4572559442142803197, guid: 9f41518c74c57bdeb88fae589d0ec494, type: 3}
+  - {fileID: 4572559442142803197, guid: d16d59341eaef70de9bb6ec270b8b7fa, type: 3}
+  - {fileID: 4572559442142803197, guid: fed83a46092f9e860a2f052a0fde6f5c, type: 3}
+--- !u!4 &739233910
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739233908}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.05434116, y: 0.07418677, z: 90}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1080870206
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,7 +910,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1251390393}
-  - component: {fileID: 1251390392}
+  - component: {fileID: 1251390394}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -869,23 +918,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1251390392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1251390391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ed721a778810142eb5cf834d3888d19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnInterval: 4
-  planePrefabs:
-  - {fileID: 4572559442142803197, guid: 9f41518c74c57bdeb88fae589d0ec494, type: 3}
-  - {fileID: 4572559442142803197, guid: d16d59341eaef70de9bb6ec270b8b7fa, type: 3}
-  - {fileID: 4572559442142803197, guid: fed83a46092f9e860a2f052a0fde6f5c, type: 3}
 --- !u!4 &1251390393
 Transform:
   m_ObjectHideFlags: 0
@@ -903,6 +935,18 @@ Transform:
   - {fileID: 553472770}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1251390394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251390391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39dccc0267c00f55eab1c52232d0cab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1521284520
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,7 +958,7 @@ GameObject:
   - component: {fileID: 1521284522}
   - component: {fileID: 1521284521}
   m_Layer: 0
-  m_Name: RoadNight
+  m_Name: Road
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -997,3 +1041,4 @@ SceneRoots:
   - {fileID: 1080870210}
   - {fileID: 1114579475}
   - {fileID: 1251390393}
+  - {fileID: 739233910}
