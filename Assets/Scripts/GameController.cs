@@ -4,8 +4,13 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     private Text scoreText;
-    private static GameController _instance;
+    [SerializeField] private Sprite roadNight;
+    [SerializeField] private Sprite roadMorning;
+    [SerializeField] private Sprite landingSiteNight;
+    [SerializeField] private Sprite landingSiteMorning;
 
+
+    private static GameController _instance;
     public static GameController Instance
     {
         get
@@ -42,7 +47,7 @@ public class GameController : MonoBehaviour
     }
     
     public void Start() {
-        this.ResetPoints();
+        this.Restart();
     }
 
     private void LoadScoreText()
@@ -58,9 +63,30 @@ public class GameController : MonoBehaviour
         Debug.Log("Pontos: " + this.points);
     }
 
-    public void ResetPoints()
+    public void Restart()
     {
         points = 0;
         this.LoadScoreText();
+        this.SetIsMorning();
+    }
+
+    private void SetIsMorning()
+    {
+        // Randomly decide if it's morning or night
+        bool isMorning = Random.value > 0.5f;
+
+        GameObject road = GameObject.FindGameObjectWithTag("Road");
+        GameObject landingSite = GameObject.FindGameObjectWithTag("LandingSite");
+
+        if (isMorning)
+        {
+            road.GetComponent<SpriteRenderer>().sprite = roadMorning;
+            landingSite.GetComponent<SpriteRenderer>().sprite = landingSiteMorning;
+        }
+        else
+        {
+            road.GetComponent<SpriteRenderer>().sprite = roadNight;
+            landingSite.GetComponent<SpriteRenderer>().sprite = landingSiteNight;
+        }
     }
 }

@@ -19,7 +19,7 @@ public class PlaneSpawner : MonoBehaviour
         planesOnScreen = 0;
         edgeOffset = 0.2f;
         currentSpawnInterval = spawnInterval;
-        GameController.Instance.ResetPoints();
+        GameController.Instance.Restart();
         Invoke("SpawnPlane", currentSpawnInterval);
     }
 

@@ -8,6 +8,8 @@ TagManager:
   - Score
   - ScoreText
   - PlaneSpawner
+  - Road
+  - LandingSite
   layers:
   - Default
   - TransparentFX
