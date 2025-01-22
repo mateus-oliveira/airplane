@@ -9,15 +9,16 @@ public class Airplane : MonoBehaviour {
     private LineRenderer lineRenderer;
     private List<Vector3> pathPoints;
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
     [SerializeField] private float speed;
     [SerializeField] private AudioClip explosionSound;
-    [SerializeField] private Sprite explosionImage;
 
     void Start() {
         currentPointIndex = 0;
         isDragging = false;
         pathPoints = new List<Vector3>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
 
         // Line Renderer
         lineRenderer = gameObject.AddComponent<LineRenderer>();
@@ -71,12 +72,16 @@ public class Airplane : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Airplane")) {
+        string tag = this.gameObject.tag;
+        if (other.CompareTag("Airplane") || other.CompareTag("Helicopter")) {
             AudioManager.instance.PlayAudio(explosionSound);
-            spriteRenderer.sprite = explosionImage;
+            animator.SetBool("Destroyed", true);
             speed = 0;
             Invoke("GameOver", 2f);
-        } else if (other.CompareTag("Score")) {
+        } else if (
+            (other.CompareTag("LandingSite") && tag == "Airplane")
+            || (other.CompareTag("HelicopterLandingSite") && tag == "Helicopter")
+        ) {
             Destroy(this.gameObject);
             GameObject spawner = GameObject.FindGameObjectWithTag("PlaneSpawner");
             spawner.GetComponent<PlaneSpawner>().RemovePlane();

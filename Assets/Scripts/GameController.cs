@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
     [SerializeField] private Sprite roadMorning;
     [SerializeField] private Sprite landingSiteNight;
     [SerializeField] private Sprite landingSiteMorning;
+    [SerializeField] private Sprite helicopterLandingSiteNight;
+    [SerializeField] private Sprite helicopterLandingSiteMorning;
 
 
     private static GameController _instance;
@@ -77,16 +79,25 @@ public class GameController : MonoBehaviour
 
         GameObject road = GameObject.FindGameObjectWithTag("Road");
         GameObject landingSite = GameObject.FindGameObjectWithTag("LandingSite");
+        GameObject[] helicopterLandingSites = GameObject.FindGameObjectsWithTag("HelicopterLandingSite");
 
         if (isMorning)
         {
             road.GetComponent<SpriteRenderer>().sprite = roadMorning;
             landingSite.GetComponent<SpriteRenderer>().sprite = landingSiteMorning;
+            foreach (GameObject helicopterLandingSite in helicopterLandingSites)
+            {
+                helicopterLandingSite.GetComponent<SpriteRenderer>().sprite = helicopterLandingSiteMorning;
+            }
         }
         else
         {
             road.GetComponent<SpriteRenderer>().sprite = roadNight;
             landingSite.GetComponent<SpriteRenderer>().sprite = landingSiteNight;
+            foreach (GameObject helicopterLandingSite in helicopterLandingSites)
+            {
+                helicopterLandingSite.GetComponent<SpriteRenderer>().sprite = helicopterLandingSiteNight;
+            }
         }
     }
 }

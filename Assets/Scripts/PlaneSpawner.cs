@@ -12,6 +12,7 @@ public class PlaneSpawner : MonoBehaviour
     [SerializeField] private int maxPlanesOnScreen;
     [SerializeField] private float spawnInterval;
     [SerializeField] private float decreaseInterval;
+    [SerializeField] private GameObject warningPrefab;
 
 
     void Start()
@@ -25,10 +26,15 @@ public class PlaneSpawner : MonoBehaviour
 
     private void UpdateInterval()
     {
+        Debug.Log("Current Interval: " + currentSpawnInterval + " s");
         currentSpawnInterval -= decreaseInterval;
         if (planesOnScreen >= maxPlanesOnScreen)
         {
-            currentSpawnInterval = spawnInterval;
+            currentSpawnInterval = spawnInterval/2f;
+        }
+        if (currentSpawnInterval < decreaseInterval)
+        {
+            currentSpawnInterval = decreaseInterval;
         }
     }
 
@@ -74,17 +80,37 @@ public class PlaneSpawner : MonoBehaviour
         spawnPosition = Camera.main.ScreenToWorldPoint(spawnPosition);
         spawnPosition.z = 0; // Definindo a posição Z para 0
 
+        // Start blinking warning before spawning the plane
+        StartCoroutine(BlinkWarning(spawnPosition, direction));
+    }
+
+    private IEnumerator BlinkWarning(Vector3 position, Vector2 direction)
+    {
+        Vector3 adjustedPosition = position + new Vector3(direction.x * 0.5f, direction.y * 0.5f, 0);
+        GameObject warning = Instantiate(warningPrefab, adjustedPosition, Quaternion.identity);
+        SpriteRenderer warningRenderer = warning.GetComponent<SpriteRenderer>();
+
+        for (int i = 0; i < 3; i++)
+        {
+            warningRenderer.enabled = true;
+            yield return new WaitForSeconds(0.5f);
+            warningRenderer.enabled = false;
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        Destroy(warning);
+
         // Instanciando o prefab
         System.Random random = new System.Random();
         int index = random.Next(planePrefabs.Count);
-        GameObject plane = Instantiate(planePrefabs[index], spawnPosition, Quaternion.identity);
+        GameObject plane = Instantiate(planePrefabs[index], position, Quaternion.identity);
 
         // Movendo o avião e ajustando a rotação
         plane.GetComponent<Airplane>().SetDirection(direction);
 
+        Invoke("SpawnPlane", currentSpawnInterval);
         planesOnScreen++;
         this.UpdateInterval();
-        Invoke("SpawnPlane", currentSpawnInterval);
     }
 
     public void RemovePlane()

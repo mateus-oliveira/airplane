@@ -10,6 +10,8 @@ TagManager:
   - PlaneSpawner
   - Road
   - LandingSite
+  - HelicopterLandingSite
+  - Helicopter
   layers:
   - Default
   - TransparentFX
