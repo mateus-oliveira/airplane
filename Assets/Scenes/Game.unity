@@ -472,7 +472,7 @@ MonoBehaviour:
   - {fileID: 1774511775065072100, guid: e78e95ee4a43fb6488b1f6af4cdd83d9, type: 3}
   maxPlanesOnScreen: 10
   spawnInterval: 6
-  decreaseInterval: 0.2
+  decreaseInterval: 0.5
   warningPrefab: {fileID: 2723485488135044590, guid: 04c104b175f092d0fb1b427a0f58ad07, type: 3}
 --- !u!4 &739233910
 Transform:
