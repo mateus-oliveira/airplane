@@ -127,11 +127,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -148,7 +148,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -169,7 +169,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -189,7 +189,7 @@ TextureImporter:
       name: ATRSpriteSheet_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 0
         y: 0
         width: 32
         height: 32
@@ -210,7 +210,7 @@ TextureImporter:
       name: ATRSpriteSheet_4
       rect:
         serializedVersion: 2
-        x: 128
+        x: 32
         y: 0
         width: 32
         height: 32
@@ -223,6 +223,27 @@ TextureImporter:
       bones: []
       spriteID: 6fce4ea8e7a88566ab7a633c2eeffef0
       internalID: 2008297104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ATRSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79a6e0a4df485c34c9da3699b72dd8ac
+      internalID: 630423073
       vertices: []
       indices: 
       edges: []
@@ -243,6 +264,7 @@ TextureImporter:
       ATRSpriteSheet_2: 1737167329
       ATRSpriteSheet_3: -742552107
       ATRSpriteSheet_4: 2008297104
+      ATRSpriteSheet_5: 630423073
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
