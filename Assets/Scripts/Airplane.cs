@@ -73,7 +73,7 @@ public class Airplane : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other) {
         string tag = this.gameObject.tag;
-        if (other.CompareTag("Airplane") || other.CompareTag("Helicopter")) {
+        if (other.CompareTag("Airplane") || other.CompareTag("Helicopter") || other.CompareTag("Ducks")) {
             AudioManager.instance.PlayAudio(explosionSound);
             animator.SetBool("Destroyed", true);
             speed = 0;

@@ -473,7 +473,9 @@ MonoBehaviour:
   maxPlanesOnScreen: 10
   spawnInterval: 6
   decreaseInterval: 0.5
+  ducksChance: 0.1
   warningPrefab: {fileID: 2723485488135044590, guid: 04c104b175f092d0fb1b427a0f58ad07, type: 3}
+  ducksPrefab: {fileID: 2172476373813980809, guid: b9bb769c4221496fab1cb86d4e0f6291, type: 3}
 --- !u!4 &739233910
 Transform:
   m_ObjectHideFlags: 0

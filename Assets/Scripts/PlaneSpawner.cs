@@ -10,9 +10,9 @@ public class PlaneSpawner : MonoBehaviour
     private float currentSpawnInterval;
     [SerializeField] private List<GameObject> planePrefabs;
     [SerializeField] private int maxPlanesOnScreen;
-    [SerializeField] private float spawnInterval;
-    [SerializeField] private float decreaseInterval;
+    [SerializeField] private float spawnInterval, decreaseInterval, ducksChance;
     [SerializeField] private GameObject warningPrefab;
+    [SerializeField] private GameObject ducksPrefab;
 
 
     void Start()
@@ -81,10 +81,10 @@ public class PlaneSpawner : MonoBehaviour
         spawnPosition.z = 0; // Definindo a posição Z para 0
 
         // Start blinking warning before spawning the plane
-        StartCoroutine(BlinkWarning(spawnPosition, direction));
+        StartCoroutine(BlinkWarning(spawnPosition, direction, edge));
     }
 
-    private IEnumerator BlinkWarning(Vector3 position, Vector2 direction)
+    private IEnumerator BlinkWarning(Vector3 position, Vector2 direction, int edge)
     {
         Vector3 adjustedPosition = position + new Vector3(direction.x * 0.5f, direction.y * 0.5f, 0);
         GameObject warning = Instantiate(warningPrefab, adjustedPosition, Quaternion.identity);
@@ -100,7 +100,19 @@ public class PlaneSpawner : MonoBehaviour
 
         Destroy(warning);
 
-        // Instanciando o prefab
+        // Randomly decide whether to spawn a plane or a duck
+        if ((edge == 1 || edge == 3) && Random.Range(0f, 1f) < ducksChance)
+        {
+            this.SpawnDucks(position, direction);
+        }
+        else
+        {
+            this.SpawnAirplane(position, direction);
+        }
+    }
+
+    private void SpawnAirplane(Vector3 position, Vector2 direction)
+    {
         System.Random random = new System.Random();
         int index = random.Next(planePrefabs.Count);
         GameObject plane = Instantiate(planePrefabs[index], position, Quaternion.identity);
@@ -111,6 +123,14 @@ public class PlaneSpawner : MonoBehaviour
         Invoke("SpawnPlane", currentSpawnInterval);
         planesOnScreen++;
         this.UpdateInterval();
+    }
+
+    private void SpawnDucks(Vector3 position, Vector2 direction)
+    {
+        // Adjust position for duck spawn
+        Vector3 adjustedPosition = position + new Vector3(direction.x * 0.5f, direction.y * 0.5f, 0);
+        GameObject duck = Instantiate(ducksPrefab, adjustedPosition, Quaternion.identity);
+        Invoke("SpawnPlane", currentSpawnInterval);
     }
 
     public void RemovePlane()

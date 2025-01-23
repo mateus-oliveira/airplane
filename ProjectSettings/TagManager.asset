@@ -12,6 +12,7 @@ TagManager:
   - LandingSite
   - HelicopterLandingSite
   - Helicopter
+  - Ducks
   layers:
   - Default
   - TransparentFX
