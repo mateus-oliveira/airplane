@@ -10,7 +10,7 @@ public class PlaneSpawner : MonoBehaviour
     private float currentSpawnInterval;
     [SerializeField] private List<GameObject> planePrefabs;
     [SerializeField] private int maxPlanesOnScreen;
-    [SerializeField] private float spawnInterval, decreaseInterval, ducksChance;
+    [SerializeField] private float spawnInterval, decreaseInterval, minInterval, ducksChance;
     [SerializeField] private GameObject warningPrefab;
     [SerializeField] private GameObject ducksPrefab;
 
@@ -32,9 +32,9 @@ public class PlaneSpawner : MonoBehaviour
         {
             currentSpawnInterval = spawnInterval/2f;
         }
-        if (currentSpawnInterval < decreaseInterval)
+        if (currentSpawnInterval < minInterval)
         {
-            currentSpawnInterval = decreaseInterval;
+            currentSpawnInterval = minInterval;
         }
     }
 

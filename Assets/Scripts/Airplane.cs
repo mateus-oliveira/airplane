@@ -26,7 +26,7 @@ public class Airplane : MonoBehaviour {
         lineRenderer.startWidth = 0.03f;
         lineRenderer.endWidth = 0.03f;
         lineRenderer.sortingOrder = 2;
-        lineRenderer.material = new Material(Shader.Find("Sprites/Default")) { color = Color.white };
+        lineRenderer.material = new Material(Shader.Find("Sprites/Default")) { color = new Color(0.82f, 0.82f, 0.82f, 0.2f) };
     }
 
     void Update() {
@@ -90,7 +90,8 @@ public class Airplane : MonoBehaviour {
     }
 
     private void GameOver() {
-        SceneManager.LoadScene("GameOver");
+        // TODO: SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene("NightGameOver");
     }
 
     private void FollowPath() {

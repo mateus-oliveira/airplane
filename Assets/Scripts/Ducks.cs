@@ -40,10 +40,9 @@ public class Ducks : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("LandingSite") || other.CompareTag("HelicopterLandingSite"))
+        if (other.CompareTag("Airplane") || other.CompareTag("Helicopter"))
         {
-            return;
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }

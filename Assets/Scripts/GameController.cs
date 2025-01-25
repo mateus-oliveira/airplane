@@ -69,7 +69,7 @@ public class GameController : MonoBehaviour
     {
         points = 0;
         this.LoadScoreText();
-        this.SetIsMorning();
+        //this.SetIsMorning();
     }
 
     private void SetIsMorning()
