@@ -101,8 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+  landSpeed: 0.0005
   explosionSound: {fileID: 8300000, guid: 25a03c70c0b335d8ba7ffdedd7277163, type: 3}
-  explosionImage: {fileID: 21300000, guid: 709ddbfb13d7f34949bd68533d38f456, type: 3}
 --- !u!50 &52919486007811554
 Rigidbody2D:
   serializedVersion: 4

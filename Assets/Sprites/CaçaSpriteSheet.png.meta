@@ -123,11 +123,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Airplane3_0
+      name: "Ca\xE7aSpriteSheet_0"
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -137,8 +137,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4fa1d8710b4a42e69dfbc37e9d80078
-      internalID: -2078643966
+      spriteID: dd4d60cdeeb10d775a66c1e993e3fff8
+      internalID: -619915313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Ca\xE7aSpriteSheet_1"
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 723b5b5641bdd4296bcab1fead943699
+      internalID: -619022645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Ca\xE7aSpriteSheet_2"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5df78155091eeda29c60af95ebce0c1
+      internalID: -801453568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Ca\xE7aSpriteSheet_3"
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 11
+        width: 32
+        height: 53
+      alignment: 9
+      pivot: {x: 0.5, y: 0.698}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3188d02766196ffa6bab8a3354e03995
+      internalID: -22065622
       vertices: []
       indices: 
       edges: []
@@ -154,7 +217,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Airplane3_0: -2078643966
+      "Ca\xE7aSpriteSheet_0": -619915313
+      "Ca\xE7aSpriteSheet_1": -619022645
+      "Ca\xE7aSpriteSheet_2": -801453568
+      "Ca\xE7aSpriteSheet_3": -22065622
+      "Ca\xE7aSpriteSheet_4": -355976939
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

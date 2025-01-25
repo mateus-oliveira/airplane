@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class Airplane : MonoBehaviour {
     private List<Vector3> pathPoints;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-    [SerializeField] private float speed;
+    [SerializeField] private float speed, landSpeed;
     [SerializeField] private AudioClip explosionSound;
 
     void Start() {
@@ -26,7 +27,7 @@ public class Airplane : MonoBehaviour {
         lineRenderer.startWidth = 0.03f;
         lineRenderer.endWidth = 0.03f;
         lineRenderer.sortingOrder = 2;
-        lineRenderer.material = new Material(Shader.Find("Sprites/Default")) { color = new Color(0.82f, 0.82f, 0.82f, 0.2f) };
+        lineRenderer.material = new Material(Shader.Find("Sprites/Default")) { color = new Color(1f, 1f, 1f, 0.5f) };
     }
 
     void Update() {
@@ -75,18 +76,61 @@ public class Airplane : MonoBehaviour {
         string tag = this.gameObject.tag;
         if (other.CompareTag("Airplane") || other.CompareTag("Helicopter") || other.CompareTag("Ducks")) {
             AudioManager.instance.PlayAudio(explosionSound);
-            animator.SetBool("Destroyed", true);
+            this.animator.SetBool("Destroyed", true);
             speed = 0;
             Invoke("GameOver", 2f);
         } else if (
             (other.CompareTag("LandingSite") && tag == "Airplane")
             || (other.CompareTag("HelicopterLandingSite") && tag == "Helicopter")
         ) {
-            Destroy(this.gameObject);
             GameObject spawner = GameObject.FindGameObjectWithTag("PlaneSpawner");
             spawner.GetComponent<PlaneSpawner>().RemovePlane();
             GameController.Instance.AddPoints(1);
+            GetComponent<Collider2D>().enabled = false;
+            if (tag == "Airplane") {
+                StartCoroutine(this.LandingAnimation());
+            } else {
+                Destroy(this.gameObject);
+            }
         }
+    }
+
+    private IEnumerator LandingAnimation() {
+        // Update order in layer to 2
+        spriteRenderer.sortingOrder = 2;
+
+        // Redimensionar o avião para simular descida
+        Vector3 originalScale = transform.localScale;
+        Vector3 targetScale = originalScale * 0.8f;
+        float resizeDuration = 0.5f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < resizeDuration) {
+            transform.localScale = Vector3.Lerp(originalScale, targetScale, elapsedTime / resizeDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Rotacionar o avião para cima
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+
+        // Mover o avião para cima para simular o pouso
+        Vector3 originalPosition = new Vector3(0, transform.position.y, 0);
+        Vector3 targetPosition = originalPosition + new Vector3(0, 2f, 0);
+        float moveDuration = 3f;
+        elapsedTime = 0f;
+
+        // Desacelerar até parar
+        float originalSpeed = landSpeed;
+        while (elapsedTime < moveDuration) {
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            transform.position = Vector3.Lerp(originalPosition, targetPosition, elapsedTime / moveDuration);
+            speed = Mathf.Lerp(originalSpeed, 0, elapsedTime / moveDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        Destroy(this.gameObject);
     }
 
     private void GameOver() {
