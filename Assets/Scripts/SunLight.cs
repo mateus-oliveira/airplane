@@ -11,8 +11,8 @@ public class SunLight : MonoBehaviour
     void Start()
     {
         sunLight = GetComponent<Light>();
-        sunLight.intensity = Random.Range(0, 2);
-        StartCoroutine(ChangeLightIntensity(sunLight.intensity == 1f ? 0f : 1f));
+        sunLight.intensity = Random.Range(0f, 1.5f);
+        StartCoroutine(ChangeLightIntensity(sunLight.intensity == 1.5f ? 0f : 1.5f));
     }
 
     // Coroutine to change light intensity over time
@@ -31,6 +31,6 @@ public class SunLight : MonoBehaviour
         }
 
         sunLight.intensity = targetIntensity;
-        StartCoroutine(ChangeLightIntensity(sunLight.intensity == 1f ? 0f : 1f));
+        StartCoroutine(ChangeLightIntensity(sunLight.intensity == 1.5f ? 0f : 1.5f));
     }
 }

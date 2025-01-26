@@ -4,9 +4,11 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Airplane : MonoBehaviour {
+    private float scaleFactor = 0.5f;
     private int currentPointIndex;
     private bool isDragging, isGrounded;
     private Vector2 moveDirection;
+    private Vector3 originalPosition, targetPosition;
     private LineRenderer lineRenderer;
     private List<Vector3> pathPoints;
     private SpriteRenderer spriteRenderer;
@@ -91,7 +93,10 @@ public class Airplane : MonoBehaviour {
             spawner.GetComponent<PlaneSpawner>().RemovePlane();
             GameController.Instance.AddPoints(1);
             GetComponent<Collider2D>().enabled = false;
-            if (tag == "Airplane") {
+            if (other.CompareTag("LandingSite")) {
+                originalPosition = other.transform.position;
+                Transform targetTransform = other.transform.Find("Target");
+                targetPosition = targetTransform.position;
                 StartCoroutine(this.LandingAnimation());
             } else {
                 Destroy(this.gameObject);
@@ -102,10 +107,11 @@ public class Airplane : MonoBehaviour {
     private IEnumerator LandingAnimation() {
         // Update order in layer to 2
         spriteRenderer.sortingOrder = 2;
+        transform.position = originalPosition;
 
         // Redimensionar o avião para simular descida
         Vector3 originalScale = transform.localScale;
-        Vector3 targetScale = originalScale * 0.8f;
+        Vector3 targetScale = originalScale * scaleFactor;
         float resizeDuration = 0.5f;
         float elapsedTime = 0f;
 
@@ -115,12 +121,11 @@ public class Airplane : MonoBehaviour {
             yield return null;
         }
 
-        // Rotacionar o avião para cima
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-
-        // Mover o avião para cima para simular o pouso
-        Vector3 originalPosition = new Vector3(0, transform.position.y, 0);
-        Vector3 targetPosition = originalPosition + new Vector3(0, 2f, 0);
+        Vector3 direction3D = targetPosition - originalPosition;
+        direction3D.Normalize();
+        Vector2 direction2D = new Vector2(direction3D.x, direction3D.y);
+        SetDirection(direction2D);
+        
         float moveDuration = 3f;
         elapsedTime = 0f;
 
@@ -169,5 +174,9 @@ public class Airplane : MonoBehaviour {
     public void SetDirection(Vector2 direction) {
         moveDirection = direction.normalized;
         this.Rotate();
+    }
+
+    public void SetScaleFactor(float scaleFactor) {
+        this.scaleFactor = scaleFactor;
     }
 }

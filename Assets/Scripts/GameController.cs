@@ -4,13 +4,6 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     private Text scoreText;
-    [SerializeField] private Sprite roadNight;
-    [SerializeField] private Sprite roadMorning;
-    [SerializeField] private Sprite landingSiteNight;
-    [SerializeField] private Sprite landingSiteMorning;
-    [SerializeField] private Sprite helicopterLandingSiteNight;
-    [SerializeField] private Sprite helicopterLandingSiteMorning;
-
 
     private static GameController _instance;
     public static GameController Instance
@@ -68,35 +61,5 @@ public class GameController : MonoBehaviour
     {
         points = 0;
         this.LoadScoreText();
-        //this.SetIsMorning();
-    }
-
-    private void SetIsMorning()
-    {
-        // Randomly decide if it's morning or night
-        bool isMorning = Random.value > 0.5f;
-
-        GameObject road = GameObject.FindGameObjectWithTag("Road");
-        GameObject landingSite = GameObject.FindGameObjectWithTag("LandingSite");
-        GameObject[] helicopterLandingSites = GameObject.FindGameObjectsWithTag("HelicopterLandingSite");
-
-        if (isMorning)
-        {
-            road.GetComponent<SpriteRenderer>().sprite = roadMorning;
-            landingSite.GetComponent<SpriteRenderer>().sprite = landingSiteMorning;
-            foreach (GameObject helicopterLandingSite in helicopterLandingSites)
-            {
-                helicopterLandingSite.GetComponent<SpriteRenderer>().sprite = helicopterLandingSiteMorning;
-            }
-        }
-        else
-        {
-            road.GetComponent<SpriteRenderer>().sprite = roadNight;
-            landingSite.GetComponent<SpriteRenderer>().sprite = landingSiteNight;
-            foreach (GameObject helicopterLandingSite in helicopterLandingSites)
-            {
-                helicopterLandingSite.GetComponent<SpriteRenderer>().sprite = helicopterLandingSiteNight;
-            }
-        }
     }
 }
