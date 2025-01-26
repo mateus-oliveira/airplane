@@ -4,39 +4,33 @@ using UnityEngine;
 
 public class SunLight : MonoBehaviour
 {
+    [SerializeField] private float changeDuration, periodDuration;
     private Light sunLight;
 
     // Start is called before the first frame update
     void Start()
     {
         sunLight = GetComponent<Light>();
-        sunLight.intensity = Random.Range(0f, 1f);
-        StartCoroutine(AlternateLightIntensity());
-    }
-
-    // Coroutine to alternate light intensity
-    private IEnumerator AlternateLightIntensity()
-    {
-        while (true)
-        {
-            yield return StartCoroutine(ChangeLightIntensity(1f, 150f));
-            yield return StartCoroutine(ChangeLightIntensity(0f, 150f));
-        }
+        sunLight.intensity = Random.Range(0, 2);
+        StartCoroutine(ChangeLightIntensity(sunLight.intensity == 1f ? 0f : 1f));
     }
 
     // Coroutine to change light intensity over time
-    private IEnumerator ChangeLightIntensity(float targetIntensity, float duration)
+    private IEnumerator ChangeLightIntensity(float targetIntensity)
     {
+        yield return new WaitForSeconds(periodDuration);
+    
         float startIntensity = sunLight.intensity;
         float elapsedTime = 0f;
 
-        while (elapsedTime < duration)
+        while (elapsedTime < changeDuration)
         {
-            sunLight.intensity = Mathf.Lerp(startIntensity, targetIntensity, elapsedTime / duration);
+            sunLight.intensity = Mathf.Lerp(startIntensity, targetIntensity, elapsedTime / changeDuration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         sunLight.intensity = targetIntensity;
+        StartCoroutine(ChangeLightIntensity(sunLight.intensity == 1f ? 0f : 1f));
     }
 }

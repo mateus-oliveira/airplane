@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ducks : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    [SerializeField] private float speed, margin;
     private Vector2 direction;
     private SpriteRenderer sprite; 
 
@@ -30,7 +30,15 @@ public class Ducks : MonoBehaviour
         // Move the duck
         transform.Translate(direction * speed * Time.deltaTime);
 
-        // Check if the duck has reached the other side of the screen
+        // Check if the duck is next to the border of the screen
+        if ((direction == Vector2.right && transform.position.x > Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x - margin) ||
+            (direction == Vector2.left && transform.position.x < Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x + margin))
+        {
+            PolygonCollider2D collider = GetComponent<PolygonCollider2D>();
+            collider.enabled = false;
+        }
+
+        // Check if the duck is next to the border of the screen
         if ((direction == Vector2.right && transform.position.x > Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x) ||
             (direction == Vector2.left && transform.position.x < Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x))
         {

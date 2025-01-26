@@ -62,7 +62,6 @@ public class GameController : MonoBehaviour
     {
         this.points += points;
         scoreText.text = "x " + this.points;
-        Debug.Log("Pontos: " + this.points);
     }
 
     public void Restart()

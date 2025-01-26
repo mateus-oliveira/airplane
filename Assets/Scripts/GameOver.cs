@@ -11,7 +11,6 @@ public class GameOver : MonoBehaviour {
     }
 
     public void Restart() {
-        //TODO: random SceneManager.LoadScene("MorningScene");
-        SceneManager.LoadScene("NightScene");
+        SceneManager.LoadScene("Game");
     }
 }

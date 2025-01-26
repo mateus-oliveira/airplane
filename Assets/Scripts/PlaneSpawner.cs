@@ -26,7 +26,6 @@ public class PlaneSpawner : MonoBehaviour
 
     private void UpdateInterval()
     {
-        Debug.Log("Current Interval: " + currentSpawnInterval + " s");
         currentSpawnInterval -= decreaseInterval;
         if (planesOnScreen >= maxPlanesOnScreen)
         {

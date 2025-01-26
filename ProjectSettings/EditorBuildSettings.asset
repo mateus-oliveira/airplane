@@ -9,16 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/NightScene.unity
-    guid: ed3fed624c9f34e3ab35319f87425a83
-  - enabled: 0
     path: Assets/Scenes/Game.unity
-    guid: 3fc8acdd13e6c734bafef6554d6fdbcd
-  - enabled: 0
-    path: Assets/Scenes/GameOver.unity
-    guid: 687084a185dcdbe0487ee403f8188fbd
+    guid: ed3fed624c9f34e3ab35319f87425a83
   - enabled: 1
-    path: Assets/Scenes/NightGameOver.unity
+    path: Assets/Scenes/GameOver.unity
     guid: 0541ac482ddb24511aaf77eaced9fb7a
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: b8e77b2599b7dc372b6a5ea58d69bab3, type: 2}

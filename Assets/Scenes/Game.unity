@@ -311,6 +311,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7618ba002b565a8b8ca787f848880f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  changeDuration: 10
+  periodDuration: 90
 --- !u!1 &553472769
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,8 +492,8 @@ MonoBehaviour:
   maxPlanesOnScreen: 10
   spawnInterval: 6
   decreaseInterval: 0.2
-  minInterval: 0.2
-  ducksChance: 0.1
+  minInterval: 0.3
+  ducksChance: 0.3
   warningPrefab: {fileID: 2723485488135044590, guid: 04c104b175f092d0fb1b427a0f58ad07, type: 3}
   ducksPrefab: {fileID: 2172476373813980809, guid: b9bb769c4221496fab1cb86d4e0f6291, type: 3}
 --- !u!4 &739233910
@@ -814,8 +816,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1477132797265051830, guid: 1c4d9148ac70a2ee087f4c6062bd3e64, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477132797265051830, guid: 1c4d9148ac70a2ee087f4c6062bd3e64, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477132797265051830, guid: 1c4d9148ac70a2ee087f4c6062bd3e64, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477132797265051830, guid: 1c4d9148ac70a2ee087f4c6062bd3e64, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477132797265051830, guid: 1c4d9148ac70a2ee087f4c6062bd3e64, type: 3}
       propertyPath: m_Intensity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477132797265051830, guid: 1c4d9148ac70a2ee087f4c6062bd3e64, type: 3}
+      propertyPath: m_CookieSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477132797265051830, guid: 1c4d9148ac70a2ee087f4c6062bd3e64, type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1477132797265051830, guid: 1c4d9148ac70a2ee087f4c6062bd3e64, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2439047623788337078, guid: 1c4d9148ac70a2ee087f4c6062bd3e64, type: 3}
       propertyPath: m_LocalPosition.x

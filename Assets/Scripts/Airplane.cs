@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Airplane : MonoBehaviour {
     private int currentPointIndex;
-    private bool isDragging;
+    private bool isDragging, isGrounded;
     private Vector2 moveDirection;
     private LineRenderer lineRenderer;
     private List<Vector3> pathPoints;
@@ -16,6 +16,7 @@ public class Airplane : MonoBehaviour {
 
     void Start() {
         currentPointIndex = 0;
+        isGrounded = false;
         isDragging = false;
         pathPoints = new List<Vector3>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -31,18 +32,20 @@ public class Airplane : MonoBehaviour {
     }
 
     void Update() {
+        if (isGrounded) { return; }
+
         if (Input.GetMouseButtonDown(0)) {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 0;
 
-            // Verifica se o toque está sobre o avião
+                // Verifica se o toque está sobre o avião
             if (Vector2.Distance(transform.position, mousePos) < 0.5f) {
                 isDragging = true;
                 pathPoints.Clear();
                 pathPoints.Add(transform.position);
                 lineRenderer.positionCount = 1;
                 lineRenderer.SetPosition(0, transform.position);
-            }
+                            }
         }
 
         if (isDragging && Input.GetMouseButton(0)) {
@@ -83,6 +86,7 @@ public class Airplane : MonoBehaviour {
             (other.CompareTag("LandingSite") && tag == "Airplane")
             || (other.CompareTag("HelicopterLandingSite") && tag == "Helicopter")
         ) {
+            isGrounded = true;
             GameObject spawner = GameObject.FindGameObjectWithTag("PlaneSpawner");
             spawner.GetComponent<PlaneSpawner>().RemovePlane();
             GameController.Instance.AddPoints(1);
@@ -134,8 +138,7 @@ public class Airplane : MonoBehaviour {
     }
 
     private void GameOver() {
-        // TODO: SceneManager.LoadScene("GameOver");
-        SceneManager.LoadScene("NightGameOver");
+        SceneManager.LoadScene("GameOver");
     }
 
     private void FollowPath() {
