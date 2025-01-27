@@ -13,6 +13,8 @@ TagManager:
   - HelicopterLandingSite
   - Helicopter
   - Ducks
+  - YellowLight
+  - RedLight
   layers:
   - Default
   - TransparentFX

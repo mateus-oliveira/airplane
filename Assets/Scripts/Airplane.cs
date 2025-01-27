@@ -104,10 +104,15 @@ public class Airplane : MonoBehaviour {
         }
     }
 
-    private IEnumerator LandingAnimation() {
+    private IEnumerator LandingAnimation() {        
         // Update order in layer to 2
         spriteRenderer.sortingOrder = 2;
+
+        // Rotate
         transform.position = originalPosition;
+        Vector3 direction3D = targetPosition - originalPosition;
+        Vector2 direction2D = new Vector2(direction3D.x, direction3D.y);
+        SetDirection(direction2D);
 
         // Redimensionar o avião para simular descida
         Vector3 originalScale = transform.localScale;
@@ -120,11 +125,6 @@ public class Airplane : MonoBehaviour {
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
-        Vector3 direction3D = targetPosition - originalPosition;
-        direction3D.Normalize();
-        Vector2 direction2D = new Vector2(direction3D.x, direction3D.y);
-        SetDirection(direction2D);
         
         float moveDuration = 3f;
         elapsedTime = 0f;
@@ -132,7 +132,6 @@ public class Airplane : MonoBehaviour {
         // Desacelerar até parar
         float originalSpeed = landSpeed;
         while (elapsedTime < moveDuration) {
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             transform.position = Vector3.Lerp(originalPosition, targetPosition, elapsedTime / moveDuration);
             speed = Mathf.Lerp(originalSpeed, 0, elapsedTime / moveDuration);
             elapsedTime += Time.deltaTime;

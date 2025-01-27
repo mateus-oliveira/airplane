@@ -1,9 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     private Text scoreText;
+    private static string currentScene;
+    
+    public int points { get; private set; }
 
     private static GameController _instance;
     public static GameController Instance
@@ -26,8 +30,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public int points { get; private set; }
-
     private void Awake()
     {
         if (_instance == null)
@@ -42,6 +44,7 @@ public class GameController : MonoBehaviour
     }
     
     public void Start() {
+        currentScene = "SelectMap";
         this.Restart();
     }
 
@@ -61,5 +64,17 @@ public class GameController : MonoBehaviour
     {
         points = 0;
         this.LoadScoreText();
+    }
+
+    public static void LoadScene(string scene)
+    {
+        Debug.Log("Loading scene: " + scene);
+        Debug.Log("Current scene: " + currentScene);
+        if (scene == "Restart") {
+            SceneManager.LoadScene(currentScene);
+        } else {
+            currentScene = scene;
+            SceneManager.LoadScene(scene);
+        }
     }
 }

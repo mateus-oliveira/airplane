@@ -43,9 +43,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7136249456590836596}
   - component: {fileID: 6070481731294439315}
+  - component: {fileID: 1086133047965955925}
   m_Layer: 0
   m_Name: L1
-  m_TagString: Untagged
+  m_TagString: YellowLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,6 +128,19 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1086133047965955925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2658844434422232465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a3966e79174fef78a301b7f26b53fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  on: 0
 --- !u!1 &6020913257870174594
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,9 +151,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2335975533813616535}
   - component: {fileID: 4610237963159200708}
+  - component: {fileID: 437612360937755285}
   m_Layer: 0
   m_Name: L2
-  m_TagString: Untagged
+  m_TagString: YellowLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -221,3 +236,16 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &437612360937755285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6020913257870174594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a3966e79174fef78a301b7f26b53fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  on: 0

@@ -9,8 +9,4 @@ public class GameOver : MonoBehaviour {
     void Start() {
         score.text = "Score: " + GameController.Instance.points;
     }
-
-    public void Restart() {
-        SceneManager.LoadScene("Game");
-    }
 }
