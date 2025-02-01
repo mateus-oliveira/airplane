@@ -9,14 +9,20 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 21e3884458df5b0e0b15dcfda215dafa
+  - enabled: 1
     path: Assets/Scenes/SelectMap.unity
     guid: 2939cb0a7a3a9bdaea988c25bcfd8cc9
   - enabled: 1
-    path: Assets/Scenes/LandingRoad.unity
-    guid: ed3fed624c9f34e3ab35319f87425a83
+    path: Assets/Scenes/Records.unity
+    guid: e2bd48b56e1ec970196449d30633ba3e
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 0541ac482ddb24511aaf77eaced9fb7a
+  - enabled: 1
+    path: Assets/Scenes/LandingRoad.unity
+    guid: ed3fed624c9f34e3ab35319f87425a83
   - enabled: 1
     path: Assets/Scenes/IslandBull.unity
     guid: 2470c12b02783e30f9082960fa5fcd48

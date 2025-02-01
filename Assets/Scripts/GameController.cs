@@ -44,8 +44,7 @@ public class GameController : MonoBehaviour
     }
     
     public void Start() {
-        currentScene = "SelectMap";
-        this.Restart();
+        currentScene = "Menu";
     }
 
     private void LoadScoreText()
@@ -76,5 +75,10 @@ public class GameController : MonoBehaviour
             currentScene = scene;
             SceneManager.LoadScene(scene);
         }
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
